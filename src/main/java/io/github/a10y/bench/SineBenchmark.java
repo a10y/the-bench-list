@@ -18,7 +18,7 @@ import org.openjdk.jmh.annotations.Warmup;
  *
  * Results from running on 2017 rMBP in January 2019:
  *
- * Benchmark                             Mode  Cnt   Score   Error  Units
+ * Benchmark                       Mode  Cnt   Score   Error  Units
  * SineBenchmark.bench_MathDotSin  avgt    3  39.505 ± 1.954  ns/op
  * SineBenchmark.bench_sine1       avgt    3  13.247 ± 1.773  ns/op
  * SineBenchmark.bench_sine2       avgt    3   6.257 ± 1.201  ns/op
