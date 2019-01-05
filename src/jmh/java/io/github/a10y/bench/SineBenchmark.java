@@ -19,14 +19,14 @@ import org.openjdk.jmh.annotations.Warmup;
  * Results from running on 2017 rMBP in January 2019:
  *
  * Benchmark                             Mode  Cnt   Score   Error  Units
- * SineImplementations.bench_MathDotSin  avgt    3  39.505 ± 1.954  ns/op
- * SineImplementations.bench_sine1       avgt    3  13.247 ± 1.773  ns/op
- * SineImplementations.bench_sine2       avgt    3   6.257 ± 1.201  ns/op
- * SineImplementations.bench_sine3       avgt    3   6.343 ± 1.627  ns/op
- * SineImplementations.bench_sine4       avgt    3   5.187 ± 1.669  ns/op
- * SineImplementations.bench_sine5       avgt    3   5.423 ± 1.234  ns/op
- * SineImplementations.bench_sine6       avgt    3   5.065 ± 1.172  ns/op
- * SineImplementations.bench_sine7       avgt    3   4.991 ± 1.250  ns/op
+ * SineBenchmark.bench_MathDotSin  avgt    3  39.505 ± 1.954  ns/op
+ * SineBenchmark.bench_sine1       avgt    3  13.247 ± 1.773  ns/op
+ * SineBenchmark.bench_sine2       avgt    3   6.257 ± 1.201  ns/op
+ * SineBenchmark.bench_sine3       avgt    3   6.343 ± 1.627  ns/op
+ * SineBenchmark.bench_sine4       avgt    3   5.187 ± 1.669  ns/op
+ * SineBenchmark.bench_sine5       avgt    3   5.423 ± 1.234  ns/op
+ * SineBenchmark.bench_sine6       avgt    3   5.065 ± 1.172  ns/op
+ * SineBenchmark.bench_sine7       avgt    3   4.991 ± 1.250  ns/op
  */
 @State(Scope.Thread)
 @BenchmarkMode(Mode.AverageTime)
@@ -34,7 +34,7 @@ import org.openjdk.jmh.annotations.Warmup;
 @Fork(1)
 @Measurement(iterations = 3, time = 10)
 @Warmup(iterations = 3, time = 10)
-public class SineImplementations {
+public class SineBenchmark {
     private static double a0 = +1.0;
     private static double a1 = -1.666666666666580809419428987894207e-1;
     private static double a2 = +8.333333333262716094425037738346873e-3;
