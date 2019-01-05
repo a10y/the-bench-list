@@ -1,0 +1,13 @@
+plugins {
+  id 'me.champeau.gradle.jmh' version '0.4.7'
+  id 'idea'
+  id 'java'
+}
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  jmh 'com.google.guava:guava:23.6.1-jre'
+}
