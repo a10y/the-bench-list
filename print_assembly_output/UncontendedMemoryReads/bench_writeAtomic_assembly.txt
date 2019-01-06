@@ -1,0 +1,59 @@
+Compiled method (c2)     310  438       4       io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic (8 bytes)
+ total in heap  [0x000000010ec28d10,0x000000010ec28fc8] = 696
+ relocation     [0x000000010ec28e38,0x000000010ec28e48] = 16
+ main code      [0x000000010ec28e60,0x000000010ec28ee0] = 128
+ stub code      [0x000000010ec28ee0,0x000000010ec28ef8] = 24
+ oops           [0x000000010ec28ef8,0x000000010ec28f00] = 8
+ metadata       [0x000000010ec28f00,0x000000010ec28f10] = 16
+ scopes data    [0x000000010ec28f10,0x000000010ec28f40] = 48
+ scopes pcs     [0x000000010ec28f40,0x000000010ec28fc0] = 128
+ dependencies   [0x000000010ec28fc0,0x000000010ec28fc8] = 8
+Decoding compiled method 0x000000010ec28d10:
+Code:
+[Entry Point]
+[Constants]
+  # {method} {0x0000000126c53f48} 'bench_writeAtomic' '()I' in 'io/github/a10y/bench/UncontendedMemoryReads'
+  #           [sp+0x20]  (sp of caller)
+  0x000000010ec28e60: mov    r10d,DWORD PTR [rsi+0x8]
+  0x000000010ec28e64: shl    r10,0x3
+  0x000000010ec28e68: cmp    rax,r10
+  0x000000010ec28e6b: jne    0x000000010ea71e20  ;   {runtime_call}
+  0x000000010ec28e71: data16 xchg ax,ax
+  0x000000010ec28e74: nop    DWORD PTR [rax+rax*1+0x0]
+  0x000000010ec28e7c: data16 data16 xchg ax,ax
+[Verified Entry Point]
+  0x000000010ec28e80: mov    DWORD PTR [rsp-0x14000],eax
+  0x000000010ec28e87: push   rbp
+  0x000000010ec28e88: sub    rsp,0x10           ;*synchronization entry
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@-1 (line 80)
+
+  0x000000010ec28e8c: mov    r10d,DWORD PTR [rsi+0x14]
+                                                ;*getfield xAtomic
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@1 (line 80)
+
+  0x000000010ec28e90: test   r10d,r10d
+  0x000000010ec28e93: je     0x000000010ec28eaf
+  0x000000010ec28e95: mov    eax,0x1
+  0x000000010ec28e9a: lock xadd DWORD PTR [r12+r10*8+0xc],eax
+                                                ;*invokevirtual getAndAddInt
+                                                ; - java.util.concurrent.atomic.AtomicInteger::incrementAndGet@8 (line 186)
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@4 (line 80)
+
+  0x000000010ec28ea1: inc    eax                ;*iadd
+                                                ; - java.util.concurrent.atomic.AtomicInteger::incrementAndGet@12 (line 186)
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@4 (line 80)
+
+  0x000000010ec28ea3: add    rsp,0x10
+  0x000000010ec28ea7: pop    rbp
+  0x000000010ec28ea8: test   DWORD PTR [rip+0xfffffffffcf01152],eax        # 0x000000010bb2a000
+                                                ;   {poll_return}
+  0x000000010ec28eae: ret
+  0x000000010ec28eaf: mov    esi,0xfffffff6
+  0x000000010ec28eb4: data16 xchg ax,ax
+  0x000000010ec28eb7: call   0x000000010ea311a0  ; OopMap{off=92}
+                                                ;*invokevirtual incrementAndGet
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@4 (line 80)
+                                                ;   {runtime_call}
+  0x000000010ec28ebc: call   0x000000010d087154  ;*invokevirtual incrementAndGet
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeAtomic@4 (line 80)
+                                                ;   {runtime_call}

@@ -33,7 +33,7 @@ import org.openjdk.jmh.annotations.Warmup;
         value = 1,
         jvmArgsAppend = {"-XX:+UnlockDiagnosticVMOptions",
                          "-XX:PrintAssemblyOptions=intel",
-                         "-XX:CompileCommand=print,*UncontendedMemoryReads.bench_*"})
+                         "-XX:CompileCommand=print,*UncontendedMemoryReads.bench_write*"})
 @Measurement(iterations = 3, time = 10)
 @Warmup(iterations = 3, time = 4)
 public class UncontendedMemoryReads {

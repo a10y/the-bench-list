@@ -1,0 +1,42 @@
+Compiled method (c2)     254  436       4       io.github.a10y.bench.UncontendedMemoryReads::bench_writeVolatile (15 bytes)
+ total in heap  [0x000000010442df90,0x000000010442e1d8] = 584
+ relocation     [0x000000010442e0b8,0x000000010442e0c8] = 16
+ main code      [0x000000010442e0e0,0x000000010442e140] = 96
+ stub code      [0x000000010442e140,0x000000010442e158] = 24
+ oops           [0x000000010442e158,0x000000010442e160] = 8
+ metadata       [0x000000010442e160,0x000000010442e168] = 8
+ scopes data    [0x000000010442e168,0x000000010442e180] = 24
+ scopes pcs     [0x000000010442e180,0x000000010442e1d0] = 80
+ dependencies   [0x000000010442e1d0,0x000000010442e1d8] = 8
+Decoding compiled method 0x000000010442df90:
+Code:
+[Entry Point]
+[Constants]
+  # {method} {0x000000011ccacdb0} 'bench_writeVolatile' '()I' in 'io/github/a10y/bench/UncontendedMemoryReads'
+  #           [sp+0x20]  (sp of caller)
+  0x000000010442e0e0: mov    r10d,DWORD PTR [rsi+0x8]
+  0x000000010442e0e4: shl    r10,0x3
+  0x000000010442e0e8: cmp    rax,r10
+  0x000000010442e0eb: jne    0x000000010427ae20  ;   {runtime_call}
+  0x000000010442e0f1: data16 xchg ax,ax
+  0x000000010442e0f4: nop    DWORD PTR [rax+rax*1+0x0]
+  0x000000010442e0fc: data16 data16 xchg ax,ax
+[Verified Entry Point]
+  0x000000010442e100: sub    rsp,0x18
+  0x000000010442e107: mov    QWORD PTR [rsp+0x10],rbp  ;*synchronization entry
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeVolatile@-1 (line 68)
+
+  0x000000010442e10c: mov    r11d,DWORD PTR [rsi+0xc]
+  0x000000010442e110: inc    r11d
+  0x000000010442e113: mov    DWORD PTR [rsi+0xc],r11d
+  0x000000010442e117: lock add DWORD PTR [rsp],0x0  ;*putfield xVol
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeVolatile@7 (line 68)
+
+  0x000000010442e11c: mov    eax,DWORD PTR [rsi+0xc]  ;*getfield xVol
+                                                ; - io.github.a10y.bench.UncontendedMemoryReads::bench_writeVolatile@11 (line 69)
+
+  0x000000010442e11f: add    rsp,0x10
+  0x000000010442e123: pop    rbp
+  0x000000010442e124: test   DWORD PTR [rip+0xfffffffffd97fed6],eax        # 0x0000000101dae000
+                                                ;   {poll_return}
+  0x000000010442e12a: ret
