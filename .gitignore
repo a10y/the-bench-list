@@ -2,3 +2,6 @@
 /build/
 /out/
 /target/
+*.iml
+*.ipr
+*.iws

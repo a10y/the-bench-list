@@ -34,8 +34,8 @@ import org.openjdk.jmh.annotations.Warmup;
         jvmArgsAppend = {"-XX:+UnlockDiagnosticVMOptions",
                          "-XX:PrintAssemblyOptions=intel",
                          "-XX:CompileCommand=print,*UncontendedMemoryReads.bench_write*"})
-@Measurement(iterations = 3, time = 10)
-@Warmup(iterations = 3, time = 4)
+@Measurement(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
+@Warmup(iterations = 5, time = 500, timeUnit = TimeUnit.MILLISECONDS)
 public class UncontendedMemoryReads {
     volatile int xVol = 0xFFFF00CC; // whatevs
     int x = 0xFFFF00CC; // whatevs
