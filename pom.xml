@@ -72,6 +72,11 @@ THE POSSIBILITY OF SUCH DAMAGE.
             <artifactId>jackson-databind</artifactId>
             <version>${jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${disruptor.version}</version>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -93,6 +98,8 @@ THE POSSIBILITY OF SUCH DAMAGE.
         <javac.target>11</javac.target>
 
         <jackson.version>2.9.7</jackson.version>
+
+        <disruptor.version>3.4.2</disruptor.version>
 
         <!--
             Name of the benchmark Uber-JAR to generate.
